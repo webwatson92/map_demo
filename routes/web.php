@@ -121,3 +121,7 @@ Route::prefix('admins')->middleware('admins')->namespace('Back')->group(function
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

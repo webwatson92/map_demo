@@ -1,4 +1,5 @@
 @extends('layouts/app', ['title' => 'Connexion']) 
+@include('layout/partials/_nav')
 
 @section('content')
 

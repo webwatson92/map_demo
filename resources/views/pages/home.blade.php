@@ -15,7 +15,7 @@
 					<p><em>Vous aurai la possiblité de connaitre plus 16 milions d'établissiments Université privé ou public et les grandes écoles d'ici et d'ailleurs.</em></p>
 					</div>
 				<div class="col-sm-4">
-					<img style="width: 30em" src="img/iphone6-3.jpg">
+					<img style="width: 30em" src="{{ URL::to('img/iphone6-3.jpg') }}">
 				</div>
 				<div class="col-sm-4">
 					 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

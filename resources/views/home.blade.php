@@ -1,5 +1,5 @@
 @extends('layouts/app', ['title' => 'Accueil']) 
-
+@include('layout/partials/_nav')
 @section('content')
     <div class="container">
 
