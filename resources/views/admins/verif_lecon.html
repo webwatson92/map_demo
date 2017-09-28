@@ -1,0 +1,236 @@
+$(document).ready(function(){
+	
+          /*Statement AJAX*/
+          var sp=0;
+          var continuer=0;
+          var decalage=0;
+          var lecon;
+          var exo=$('#exo').val();
+          var user, lecon_id, module_id;
+          var ScoreGeneral=40;
+          var score;
+          var minimumscore=20;
+          console.log(exo);
+
+		      /*BLOC DE VERIFICATION*/
+
+		      /*SELECTION DE PAIRE*/
+            var action=0;
+            var click="";
+            var un,deux;
+            $(document).on('click','.retunPaireButton', function(e)
+              {                  
+                  e.preventDefault();
+                  if(action!=1)
+                  {
+                    click+=$(this).val()+"=";
+                   // console.log("click="+click);
+                    action++;
+                    console.log($(this));
+                    un=$(this);
+                  }
+                  else if(action==1)
+                  {
+                    click+=$(this).val();
+                    action=0;
+                    cpt=0;
+                    //console.log($(this));
+                    deux=$(this);
+                    if(checkValue(click)==true)
+                    {                         
+                            var total=$(".retunPaireButton");
+                            var a=un.attr("disabled",true);
+                            var b=deux.attr("disabled",true);
+
+                            un.css("background-color","green").slideUp( 100 ).delay( 200 ).fadeIn( 200 ); 
+                            deux.css("background-color","green").slideUp( 100 ).delay( 200 ).fadeIn( 200 );
+
+                            //a.css("background-color","grey")
+                            //b.css("background-color","grey")
+
+                            var nombre=$(':disabled');
+                            console.log("Elements désactivés"+(nombre.length)-1 +" Elements total="+total.length);
+                          if((nombre.length)-1==total.length)
+                          {
+                            $("#submit").attr("disabled",false);
+                            var verif = $('#verify').val();
+                            verif.addClass('hide');
+                            alertify.success("Ta réponse est exacte");
+                          }else
+                          {
+                            $("#submit").attr("disabled",true);
+                          }
+                    }
+                    else
+                    {
+                            un.addClass('red').slideUp( 100 ).delay( 200 ).fadeIn( 200 );
+                            un.addClass('retunPaireButton');
+                            deux.addClass('red').slideUp( 100 ).delay( 200 ).fadeIn( 200 );
+                            deux.addClass('retunPaireButton');
+                            score=ScoreGeneral-10;
+                            if(score==20)
+                            {
+                                score=minimumscore;
+                            }
+                            
+                    }
+
+                    click="";
+                  }
+                  else{
+                    console.log("valeurfd "+click);
+                  }
+              });
+
+               function checkValue(value)
+              {                    
+              var bool=false;
+              $('.myhidden').each(function()
+              {
+                  if($(this).val()==value)
+                  {
+                       //$("button .myhidden").attr("disabled",true);
+                        var i=$(".myhidden").val();
+                        //alert(i);
+                       // $(i).attr("disabled",true);
+                        bool=true;
+                  }                  
+              });
+              return bool;
+            }
+          /*END VERIF PAIRE*/
+
+        /*BEGIN VERIF GLOBAL*/
+         
+        verify = $('#verify').val();
+        if(verify)
+        {        
+          //$("#submit").attr("disabled", false);
+          $("#verify").click(function(e)
+            {
+
+                   console.log(score);
+               e.preventDefault();
+              //alert("fovdfok"); 
+                  var I=$("input:radio[name=image]:checked").val();
+                  e.preventDefault();
+               // $("#submit").attr("disabled", true);
+                  var valeur=$(".myradio").val();
+                  var response=$("#hidden").val();
+                  var radio=$(".myradio");
+                  var convert = response.toLowerCase();
+                  var reponseText=$("#reponseText").val();
+                  if(I==undefined) //N' est pas de type image
+                  {             //var trim = reponseText.trim();
+                                if(reponseText)
+                                {
+                                  if(reponseText.toLowerCase() == convert){
+                                       alertify.success("Ta réponse est exacte");
+                                      $("#submit").attr("disabled", false);
+                                  }else{
+                                        alertify.error("Mauvaise reponse");
+                                        $("#reponseText").val("");
+                                        score=ScoreGeneral-5;
+                                        if(score==20){
+                                             score=minimumscore;
+                                        }
+                                        console.log(" poopopo"+score);
+                                        $(".adbtn").removeClass('hide');
+                                  }
+                                }
+                  }//fin test de type input
+                  else
+                  {
+                        if(I==convert){
+                          alertify.success("Ta réponse est exacte");
+                          $("#submit").attr("disabled", false);
+                        }
+                        else
+                        {         
+                           alertify.error("Mauvaise reponse");
+                           score=ScoreGeneral-5;
+                            if(score==20)
+                            {
+                                score=minimumscore;
+                            }
+                            console.log(" poopopo"+score);
+                        }
+                  }
+                  e.preventDefault();
+                  //for the input verif
+            });   
+        }else
+        {
+          $("#submit").attr("disabled",false);
+        }
+
+          /*END VERIFI GLOBAL*/
+		     /*END VERIFICATION*/
+
+         /*BEGIN AJAX STATEMENT*/
+        $("#submit").click(function(e)
+        {
+            e.preventDefault();
+           
+            decalage=decalage+1;
+            lecon=$("#lecon").val();
+            module=$(".module").val();
+            console.log("module= "+module);
+
+            var url =  "teste.php?teste="+decalage+"&"+exo+"&le="+lecon+"&m="+module;
+            //console.log(url);
+            $.ajax
+            ({
+              url: "teste.php?teste="+decalage+"&"+exo+"&le="+lecon+"&m="+module,
+              type: "GET",
+              dataType: 'html',
+              beforeSend: function()
+              {
+                //$("#submit").attr("disabled",true)
+              },   
+              success:function(data)
+              {
+                //console.log(data);
+                if(data!="false")
+                {
+                  if(data){
+                    var verif=$("#Verifier").attr("disabled",false);
+                    var nextquestion=$("#nextquestion").html(data);
+                    console.log("decalage:"+decalage);
+                    console.log(--exo);
+                  }
+                  if(exo==1){ /*UPDATE DATABASE HERE*/
+                      $.ajax({
+                          // url: "../queryupdate.php?le="+lecon,
+                          url: "queryupdate.php",
+                          type: "POST",
+                          data: { points: score, super_pouvoir: sp, le: lecon, m: module },
+                          dataType: 'html',
+                          success:function(data)
+                          {
+                             // alert("ok lecon"+lecon+"ajouté"); 
+                              alert(data+" "+sp+" "+lecon);
+                              //le super pourvoir dois changer lorsque je suis à la dernière leçon
+                          }                         
+                      });
+                  }
+                }
+                else
+                { 
+                  var url = "http://localhost/EGboasouklou_08_08_2017";
+                  var lecon_id=$("#lecon").val();
+                  window.location.href = url+"/succes.php?le="+lecon_id;
+                  console.log("Voici "+vv);
+                  $("#nextquestion").html('');
+                  $("#reponseText").html('');
+                  $(".myadbtn").html('');
+                }
+              },
+              error: function(data)
+              {
+                console.log("non"+data);          
+              }
+            });
+          //end ajax
+        });
+});
