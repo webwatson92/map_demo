@@ -18,15 +18,16 @@
                     <img style="width: 30em" src="img/iphone6-3.jpg">
                 </div>
                 <div class="col-sm-4">
-                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                          <!-- grande affiche -->
-                          <ins class="adsbygoogle"
-                               style="display:inline-block;width:300px;height:500px"
-                               data-ad-client="ca-pub-1980797020367187"
-                               data-ad-slot="5029615559"></ins>
-                          <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                          </script>
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                      <ins class="adsbygoogle"
+                           style="display:block"
+                           data-ad-format="fluid"
+                           data-ad-layout-key="-ej+6g-15-c4+qd"
+                           data-ad-client="ca-pub-3624912069544968"
+                           data-ad-slot="1339610136"></ins>
+                      <script>
+                           (adsbygoogle = window.adsbygoogle || []).push({});
+                      </script>
                 </div>
             </div>
         </section>
