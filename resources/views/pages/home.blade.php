@@ -18,15 +18,16 @@
 					<img style="width: 30em" src="{{ URL::to('img/iphone6-3.jpg') }}">
 				</div>
 				<div class="col-sm-4">
-					 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                          <!-- grande affiche -->
-                          <ins class="adsbygoogle"
-                               style="display:inline-block;width:300px;height:500px"
-                               data-ad-client="ca-pub-1980797020367187"
-                               data-ad-slot="5029615559"></ins>
-                          <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
-                          </script>
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Bloc pub -->
+					<ins class="adsbygoogle"
+					     style="display:block"
+					     data-ad-client="ca-pub-3624912069544968"
+					     data-ad-slot="9464579951"
+					     data-ad-format="auto"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
 				</div>
 			</div>
 		</section>

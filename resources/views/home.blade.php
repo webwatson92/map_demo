@@ -19,14 +19,14 @@
                 </div>
                 <div class="col-sm-4">
                       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                      <!-- Bloc pub -->
                       <ins class="adsbygoogle"
                            style="display:block"
-                           data-ad-format="fluid"
-                           data-ad-layout-key="-ej+6g-15-c4+qd"
                            data-ad-client="ca-pub-3624912069544968"
-                           data-ad-slot="1339610136"></ins>
+                           data-ad-slot="9464579951"
+                           data-ad-format="auto"></ins>
                       <script>
-                           (adsbygoogle = window.adsbygoogle || []).push({});
+                      (adsbygoogle = window.adsbygoogle || []).push({});
                       </script>
                 </div>
             </div>
